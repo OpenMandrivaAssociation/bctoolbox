@@ -1,0 +1,15 @@
+diff -up bctoolbox-0.6.0/src/crypto/polarssl1.2.c.omv~ bctoolbox-0.6.0/src/crypto/polarssl1.2.c
+--- bctoolbox-0.6.0/src/crypto/polarssl1.2.c.omv~	2018-06-18 16:02:12.085887985 +0200
++++ bctoolbox-0.6.0/src/crypto/polarssl1.2.c	2018-06-18 16:03:11.032884736 +0200
+@@ -34,9 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fi
+ #include <polarssl/ctr_drbg.h>
+ #include <polarssl/md5.h>
+ #include <polarssl/sha1.h>
+-#include <polarssl/sha2.h>
+-#include <polarssl/sha4.h>
++#include <polarssl/sha256.h>
+ #include <polarssl/gcm.h>
++#include <polarssl/compat-1.2.h>
+ 
+ #include "bctoolbox/logging.h"
+ 
