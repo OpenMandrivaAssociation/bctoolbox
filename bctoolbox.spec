@@ -1,16 +1,16 @@
-%define major	0
+%define major	1
 %define libname	%mklibname bctoolbox %{major}
 %define devname	%mklibname -d bctoolbox
 %define devstat	%mklibname -s bctoolbox
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	0.0.3
+Version:	0.6.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/BelledonneCommunications/
-Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/0.0.3.tar.gz
+Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz
 BuildRequires:	polarssl-devel
 BuildRequires:	cmake
 
@@ -50,7 +50,7 @@ This package includes the development files for %{name}.
 
 %build
 sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.txt
-%cmake
+%cmake -DENABLE_TESTS=NO -DENABLE_TESTS_COMPONENT=NO
 %make
 
 %install
