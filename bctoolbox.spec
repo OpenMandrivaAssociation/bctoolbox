@@ -11,7 +11,7 @@ Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/BelledonneCommunications/
-Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz
+Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:		bctoolbox-0.6.0-polarssl-1.3.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
