@@ -6,8 +6,8 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	0.6.0
-Release:	3
+Version:	4.3.2
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/BelledonneCommunications/
