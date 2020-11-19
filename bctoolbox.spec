@@ -5,12 +5,12 @@
 %define libname	%mklibname bctoolbox %{major}
 %define tlibname %mklibname bctoolbox-tester %{major}
 %define devname	%mklibname -d bctoolbox
-%define devstat	%mklibname -s bctoolbox
+%define devstat	%mklibname -d -s bctoolbox
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	4.4.8
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/BelledonneCommunications/
@@ -54,6 +54,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{devname} = %{version}-%{release}
 Provides:	%{name}-static-devel = %{version}-%{release}
+%rename %{_lib}bctoolbox-static
 
 %description -n	%{devstat}
 This package includes the static library files for %{name}.
@@ -67,10 +68,11 @@ sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.
 	-DENABLE_STRICT:BOOL=NO \
 	-DENABLE_MBEDTLS:BOOL=ON \
 	-DENABLE_POLARSSL:BOOL=OFF
-%make
+
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files -n %{libname}
 %{_libdir}/libbctoolbox.so.%{major}*
