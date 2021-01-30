@@ -9,7 +9,7 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	4.4.17
+Version:	4.4.24
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -23,6 +23,8 @@ BuildRequires:	mbedtls-devel
 Utilities library used by Belledonne Communications
 softwares like belle-sip, mediastreamer2 and linphone.
 
+#---------------------------------------------------------------------------
+
 %package -n	%{libname}
 Summary:	Library for accessing USB devices
 Group:		System/Libraries
@@ -31,12 +33,22 @@ Group:		System/Libraries
 Library used by Belledonne Communications
 softwares like belle-sip, mediastreamer2 and linphone.
 
+%files -n %{libname}
+%{_libdir}/libbctoolbox.so.%{major}*
+
+#---------------------------------------------------------------------------
+
 %package -n	%{tlibname}
 Summary:	%{name} testing library
 Group:		System/Libraries
 
 %description -n	%{tlibname}
 %{name} testing library
+
+%files -n %{tlibname}
+%{_libdir}/libbctoolbox-tester.so.%{major}*
+
+#---------------------------------------------------------------------------
 
 %package -n	%{devname}
 Summary:	Development files for %{name}
@@ -49,12 +61,28 @@ Obsoletes:	%{name}-devel-doc < 1.0.15-2
 %description -n	%{devname}
 This package includes the development files for %{name}.
 
+#---------------------------------------------------------------------------
+
 %package -n	%{devstat}
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{devname} = %{version}-%{release}
 Provides:	%{name}-static-devel = %{version}-%{release}
 %rename %{_lib}bctoolbox-static
+
+%files -n %{devstat}
+%{_libdir}/libbctoolbox.a
+%{_libdir}/libbctoolbox-tester.a
+
+%files -n %{devname}
+%{_libdir}/libbctoolbox.so
+%{_libdir}/libbctoolbox-tester.so
+%{_includedir}/%{name}
+%{_datadir}/%{name}/cmake/
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}-tester.pc
+
+#---------------------------------------------------------------------------
 
 %description -n	%{devstat}
 This package includes the static library files for %{name}.
@@ -73,21 +101,3 @@ sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.
 
 %install
 %make_install -C build
-
-%files -n %{libname}
-%{_libdir}/libbctoolbox.so.%{major}*
-
-%files -n %{tlibname}
-%{_libdir}/libbctoolbox-tester.so.%{major}*
-
-%files -n %{devstat}
-%{_libdir}/libbctoolbox.a
-%{_libdir}/libbctoolbox-tester.a
-
-%files -n %{devname}
-%{_libdir}/libbctoolbox.so
-%{_libdir}/libbctoolbox-tester.so
-%{_includedir}/%{name}
-%{_datadir}/%{name}/cmake/
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/pkgconfig/%{name}-tester.pc
