@@ -15,6 +15,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/BelledonneCommunications/
 Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	mbedtls-devel
@@ -61,6 +62,14 @@ Obsoletes:	%{name}-devel-doc < 1.0.15-2
 %description -n	%{devname}
 This package includes the development files for %{name}.
 
+%files -n %{devname}
+%{_libdir}/libbctoolbox.so
+%{_libdir}/libbctoolbox-tester.so
+%{_includedir}/%{name}
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}-tester.pc
+%{_datadir}/cmake/%{name}
+
 #---------------------------------------------------------------------------
 
 %package -n	%{devstat}
@@ -70,28 +79,21 @@ Requires:	%{devname} = %{version}-%{release}
 Provides:	%{name}-static-devel = %{version}-%{release}
 %rename %{_lib}bctoolbox-static
 
+%description -n	%{devstat}
+This package includes the static library files for %{name}.
+
 %files -n %{devstat}
 %{_libdir}/libbctoolbox.a
 %{_libdir}/libbctoolbox-tester.a
 
-%files -n %{devname}
-%{_libdir}/libbctoolbox.so
-%{_libdir}/libbctoolbox-tester.so
-%{_includedir}/%{name}
-%{_datadir}/%{name}/cmake/
-%{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/pkgconfig/%{name}-tester.pc
-
 #---------------------------------------------------------------------------
 
-%description -n	%{devstat}
-This package includes the static library files for %{name}.
 
 %prep
 %autosetup -p1
 
 %build
-sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.txt
+#sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.txt
 %cmake \
 	-DENABLE_STRICT:BOOL=NO \
 	-DENABLE_MBEDTLS:BOOL=ON \
@@ -101,3 +103,4 @@ sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.
 
 %install
 %make_install -C build
+
