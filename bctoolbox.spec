@@ -13,9 +13,10 @@ Version:	4.4.24
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		https://github.com/BelledonneCommunications/
-Source0:	https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}/%{name}-%{version}.tar.gz
+Url:		https://www.linphone.org
+Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
+Patch1:		bctoolbox-4.4.24-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	mbedtls-devel
