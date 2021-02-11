@@ -10,7 +10,7 @@
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	4.4.24
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
@@ -20,6 +20,7 @@ Patch1:		bctoolbox-4.4.24-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	mbedtls-devel
+BuildRequires:  ninja
 
 %description
 Utilities library used by Belledonne Communications
@@ -98,10 +99,11 @@ This package includes the static library files for %{name}.
 %cmake \
 	-DENABLE_STRICT:BOOL=NO \
 	-DENABLE_MBEDTLS:BOOL=ON \
-	-DENABLE_POLARSSL:BOOL=OFF
+	-DENABLE_POLARSSL:BOOL=OFF \
+	-G Ninja
 
-%make_build
+%ninja_build
 
 %install
-%make_install -C build
+%ninja_install -C build
 
