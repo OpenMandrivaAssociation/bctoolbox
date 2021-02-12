@@ -10,7 +10,7 @@
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	4.4.24
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
@@ -58,6 +58,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{tlibname} = %{version}-%{release}
+Requires:	%{devstat} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{name}-devel-doc < 1.0.15-2
 
@@ -79,7 +80,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{devname} = %{version}-%{release}
 Provides:	%{name}-static-devel = %{version}-%{release}
-%rename %{_lib}bctoolbox-static
+%rename		%{_lib}bctoolbox-static
 
 %description -n	%{devstat}
 This package includes the static library files for %{name}.
@@ -106,4 +107,3 @@ This package includes the static library files for %{name}.
 
 %install
 %ninja_install -C build
-
