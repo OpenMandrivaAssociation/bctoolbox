@@ -20,7 +20,7 @@ Patch1:		bctoolbox-4.4.24-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	mbedtls-devel
-BuildRequires:  ninja
+BuildRequires:	ninja
 
 %description
 Utilities library used by Belledonne Communications
@@ -78,7 +78,7 @@ This package includes the development files for %{name}.
 %package -n	%{devstat}
 Summary:	Development files for %{name}
 Group:		Development/C
-#Requires:	%{devname} = %{version}-%{release}
+Requires:	%{devname} = %{version}-%{release}
 Provides:	%{name}-static-devel = %{version}-%{release}
 %rename		%{_lib}bctoolbox-static
 
