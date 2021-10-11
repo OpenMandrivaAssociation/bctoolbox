@@ -10,7 +10,7 @@
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	4.4.34
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
