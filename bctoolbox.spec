@@ -9,14 +9,14 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	4.4.34
-Release:	2
+Version:	5.0.44
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
-Patch1:		bctoolbox-4.4.24-cmake-fix-version.patch
+Patch1:		bctoolbox-5.0.44-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	mbedtls-devel
@@ -96,7 +96,6 @@ This package includes the static library files for %{name}.
 %autosetup -p1
 
 %build
-#sed -i 's!CMAKE_INSTALL_PREFIX}/lib!CMAKE_INSTALL_PREFIX}/%{_lib}!g' CMakeLists.txt
 %cmake \
 	-DENABLE_STRICT:BOOL=NO \
 	-DENABLE_MBEDTLS:BOOL=ON \
@@ -107,3 +106,4 @@ This package includes the static library files for %{name}.
 
 %install
 %ninja_install -C build
+
