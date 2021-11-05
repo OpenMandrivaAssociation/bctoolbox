@@ -1,5 +1,4 @@
 %define _disable_ld_no_undefined 1
-%define _disable_lto 1
 
 %define major	1
 %define libname	%mklibname bctoolbox %{major}
@@ -19,6 +18,7 @@ Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
 Patch1:		bctoolbox-5.0.44-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(bcunit)
+BuildRequires:	libdecaf-devel
 BuildRequires:	mbedtls-devel
 BuildRequires:	ninja
 
