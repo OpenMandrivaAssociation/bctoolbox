@@ -17,6 +17,7 @@ Patch1:		bctoolbox-5.1.45-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bcunit)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	libdecaf-devel
 BuildRequires:	mbedtls-devel
 
