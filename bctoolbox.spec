@@ -1,5 +1,3 @@
-#define _disable_ld_no_undefined 1
-
 %define major	1
 %define libname	%mklibname bctoolbox %{major}
 %define tlibname %mklibname bctoolbox-tester %{major}
@@ -15,7 +13,7 @@ Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
-Patch1:		bctoolbox-5.0.45-cmake-fix-version.patch
+Patch1:		bctoolbox-5.1.45-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bcunit)
