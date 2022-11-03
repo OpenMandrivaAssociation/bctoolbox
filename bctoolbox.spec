@@ -6,8 +6,7 @@
 
 %bcond_without	mbedtls
 %bcond_with	polarssl
-%bcond_without	strict
-
+%bcond_with	strict
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
