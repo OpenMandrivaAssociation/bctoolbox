@@ -4,6 +4,11 @@
 %define devname	 %mklibname %{name} -d
 %define devstat	 %mklibname %{name} -d -s
 
+%bcond_without	mbedtls
+%bcond_with	polarssl
+%bcond_without	strict
+
+
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	5.1.67
@@ -96,9 +101,9 @@ This package includes the static library files for %{name}.
 
 %build
 %cmake \
-	-DENABLE_STRICT:BOOL=NO \
-	-DENABLE_MBEDTLS:BOOL=ON \
-	-DENABLE_POLARSSL:BOOL=OFF \
+	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
+	-DENABLE_MBEDTLS:BOOL=%{?with_mbedtls:ON}%{?!with_mbedtls:OFF} \
+	-DENABLE_POLARSSL:BOOL=%{?with_polarssl:ON}%{?!with_polarssl:OFF} \
 	-G Ninja
 
 %ninja_build
