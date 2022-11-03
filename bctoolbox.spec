@@ -1,12 +1,12 @@
 %define major	1
-%define libname	%mklibname bctoolbox %{major}
-%define tlibname %mklibname bctoolbox-tester %{major}
-%define devname	%mklibname -d bctoolbox
-%define devstat	%mklibname -d -s bctoolbox
+%define libname	 %mklibname %{name}
+%define tlibname %mklibname %{name}-tester
+%define devname	 %mklibname %{name} -d
+%define devstat	 %mklibname %{name} -d -s
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.1.61
+Version:	5.1.67
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
