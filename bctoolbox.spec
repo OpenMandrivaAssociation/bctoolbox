@@ -10,14 +10,14 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.1.72
+Version:	5.2.0
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
-Patch1:		bctoolbox-5.1.45-cmake-fix-version.patch
+Patch1:		bctoolbox-5.2.0-cmake-fix-version.patch
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bcunit)
