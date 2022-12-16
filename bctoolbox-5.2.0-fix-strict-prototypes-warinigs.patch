@@ -1,0 +1,11 @@
+--- a/src/tester.c
++++ b/src/tester.c	
+@@ -142,7 +142,7 @@
+ 	process_events = func;
+ }
+ 
+-void bc_tester_process_events(){
++void bc_tester_process_events(void){
+ 	if( process_events)
+ 		process_events();
+ }
