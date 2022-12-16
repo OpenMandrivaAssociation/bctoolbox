@@ -102,8 +102,8 @@ This package includes the static library files for %{name}.
 
 %build
 %cmake \
-	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
 	-DENABLE_STATIC:BOOL=%{?with_static:ON}%{?!with_static:OFF} \
+	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
 	-DENABLE_MBEDTLS:BOOL=%{?with_mbedtls:ON}%{?!with_mbedtls:OFF} \
 	-DENABLE_POLARSSL:BOOL=%{?with_polarssl:ON}%{?!with_polarssl:OFF} \
 	-G Ninja
