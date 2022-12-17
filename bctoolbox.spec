@@ -98,7 +98,6 @@ This package includes the static library files for %{name}.
 
 #---------------------------------------------------------------------------
 
-
 %prep
 %autosetup -p1
 
