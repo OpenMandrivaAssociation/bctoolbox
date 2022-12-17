@@ -21,6 +21,7 @@ Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{na
 Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
 Patch1:		bctoolbox-5.2.0-cmake-fix-version.patch
 Patch2:		bctoolbox-5.2.0-fix-strict-prototypes-warinigs.patch 
+
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bcunit)
