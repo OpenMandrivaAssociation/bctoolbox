@@ -26,6 +26,7 @@ BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(bcunit)
 BuildRequires:	pkgconfig(ncurses)
+BuildRequires:	pkgconfig(libz)
 BuildRequires:	libdecaf-devel
 BuildRequires:	mbedtls-devel
 
