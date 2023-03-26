@@ -9,7 +9,6 @@
 %bcond_without	static
 %bcond_with	strict
 
-
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	5.2.38
@@ -57,6 +56,7 @@ Group:		System/Libraries
 %{name} testing library
 
 %files -n %{tlibname}
+%{_bindir}/%{name}_tester
 %{_libdir}/libbctoolbox-tester.so.%{major}*
 
 #---------------------------------------------------------------------------
