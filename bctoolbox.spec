@@ -6,7 +6,7 @@
 
 %bcond_without	mbedtls
 %bcond_with	polarssl
-%bcond_without	static
+%bcond_with	static
 %bcond_with	strict
 
 Summary:	Library for accessing USB devices
@@ -55,7 +55,7 @@ Group:		System/Libraries
 %{name} testing library
 
 %files -n %{tlibname}
-%{_bindir}/%{name}_tester
+%{_bindir}/%{name}-tester
 %{_libdir}/libbctoolbox-tester.so.%{major}*
 
 #---------------------------------------------------------------------------
@@ -78,10 +78,11 @@ This package includes the development files for %{name}.
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/pkgconfig/%{name}-tester.pc
-%{_datadir}/cmake/%{name}
+%{_datadir}/cmake/BCToolbox
 
 #---------------------------------------------------------------------------
 
+%if %{with static}
 %package -n	%{devstat}
 Summary:	Development files for %{name}
 Group:		Development/C
@@ -95,6 +96,7 @@ This package includes the static library files for %{name}.
 %files -n %{devstat}
 %{_libdir}/libbctoolbox.a
 %{_libdir}/libbctoolbox-tester.a
+%endif
 
 #---------------------------------------------------------------------------
 
