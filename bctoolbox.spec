@@ -17,7 +17,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		bctoolbox-5.3.6-cmake-fix-pkgconfig-pc-file.patch
+Patch0:		bctoolbox-5.3.6-cmake-fix_cmake_path.patch
 Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
 
 BuildRequires:	cmake
@@ -65,7 +65,9 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{tlibname} = %{version}-%{release}
+%if %{with static}
 Requires:	%{devstat} = %{version}-%{release}
+%endif
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{name}-devel-doc < 1.0.15-2
 
