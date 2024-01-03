@@ -17,8 +17,8 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		bctoolbox-4.4.24-cmake-fix-pkgconfig-pc-file.patch
-Patch1:		bctoolbox-5.2.0-cmake-fix-version.patch
+Patch0:		bctoolbox-5.3.6-cmake-fix-pkgconfig-pc-file.patch
+Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
