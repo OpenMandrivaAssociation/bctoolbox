@@ -11,7 +11,7 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.3.7
+Version:	5.3.15
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -22,7 +22,7 @@ Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:	pkgconfig(bcunit)
+BuildRequires:	cmake(bcunit)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	libdecaf-devel
@@ -111,6 +111,7 @@ This package includes the static library files for %{name}.
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
 	-DENABLE_MBEDTLS:BOOL=%{?with_mbedtls:ON}%{?!with_mbedtls:OFF} \
 	-DENABLE_POLARSSL:BOOL=%{?with_polarssl:ON}%{?!with_polarssl:OFF} \
+	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname} \
 	-G Ninja
 
 %ninja_build
