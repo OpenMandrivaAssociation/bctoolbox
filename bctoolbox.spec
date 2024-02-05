@@ -6,6 +6,8 @@
 
 # exclude unwanted cmake requires
 %global __provides_exclude_from ^%{_datadir}/cmake/.*/Find.*cmake$
+%global __requires_exclude cmake\\(decaf\\)|cmake\\(Decaf\\) \
+	|cmake\\(mbedtls\\)|cmake\\(MbedTLS\\)
 
 %bcond_without	mbedtls
 %bcond_with	polarssl
