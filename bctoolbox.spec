@@ -1,8 +1,11 @@
 %define major	1
-%define libname	 %mklibname %{name}
-%define tlibname %mklibname %{name}-tester
-%define devname	 %mklibname %{name} -d
-%define devstat	 %mklibname %{name} -d -s
+%define libname	%mklibname %{name}
+%define tlibname	%mklibname %{name}-tester
+%define devname	%mklibname %{name} -d
+%define devstat	%mklibname %{name} -d -s
+
+# exclude unwanted cmake requires
+%global __provides_exclude_from ^%{_datadir}/cmake/*/Find.*cmake$
 
 %bcond_without	mbedtls
 %bcond_with	polarssl
@@ -12,7 +15,7 @@
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
 Version:	5.3.15
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
