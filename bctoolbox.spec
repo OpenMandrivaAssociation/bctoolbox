@@ -16,7 +16,7 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.3.38
+Version:	5.3.41
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
