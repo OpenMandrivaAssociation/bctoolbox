@@ -25,7 +25,7 @@ Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-5.3.6-cmake-fix_cmake_path.patch
 Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
-Patch2:		bctoolbox-5.3.94-mbed1.patch
+Patch2:		bctoolbox-5.3.94-mbed.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
