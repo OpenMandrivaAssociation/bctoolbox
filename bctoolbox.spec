@@ -13,11 +13,11 @@
 %bcond decaf			1
 %bcond strict			0
 %bcond unit_tests		1
-%bcond unit_tests_install	1
+%bcond unit_tests_install	0
 
-Summary:	Utilities library used by Belledonne Communications softwares
+Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.3.94
+Version:	5.3.97
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -25,7 +25,7 @@ Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		bctoolbox-5.3.6-cmake-fix_cmake_path.patch
 Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
-Patch2:		bctoolbox-5.3.94-mbed.patch
+Patch2:		bctoolbox-5.3.97-mbed.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
@@ -62,7 +62,9 @@ Group:		System/Libraries
 %{name} testing library
 
 %files -n %{tlibname}
+%if %{with unit_tests_install}
 %{_bindir}/%{name}-tester
+%endif
 %{_libdir}/libbctoolbox-tester.so.%{major}*
 
 #---------------------------------------------------------------------------
@@ -115,7 +117,6 @@ This package includes the static library files for %{name}.
 %build
 %cmake \
 	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
-	-DENABLE_MBEDTLS:BOOL=%{?with_mbedtls:ON}%{?!with_mbedtls:OFF} \
 	-DENABLE_DECAF:BOOL=%{?with_defac:ON}%{?!with_decaf:OFF} \
 	-DENABLE_UNIT_TESTS:BOOL=%{?with_unit_tests:ON}%{?!with_unit_tests:OFF} \
 	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname} \
