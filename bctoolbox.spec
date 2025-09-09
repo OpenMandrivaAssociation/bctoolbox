@@ -17,15 +17,12 @@
 
 Summary:	Library for accessing USB devices
 Name:		bctoolbox
-Version:	5.4.20
+Version:	5.4.42
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.linphone.org
 Source0:	https://gitlab.linphone.org/BC/public/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		bctoolbox-5.3.6-cmake-fix_cmake_path.patch
-Patch1:		bctoolbox-5.3.6-cmake-fix-version.patch
-Patch2:		bctoolbox-5.3.97-mbed.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
@@ -34,6 +31,13 @@ BuildRequires:	pkgconfig(mbedtls)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	libdecaf-devel
+
+%patchlist
+bctoolbox-5.3.6-cmake-fix_cmake_path.patch
+bctoolbox-5.3.6-cmake-fix-version.patch
+#bctoolbox-5.4.20-mbed.patch
+https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-mbedtls.patch
+https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-decaf-shared.patch
 
 %description
 Utilities library used by Belledonne Communications
