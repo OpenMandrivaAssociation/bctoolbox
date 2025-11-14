@@ -15,7 +15,7 @@
 %bcond unit_tests		1
 %bcond unit_tests_install	0
 
-Summary:	Library for accessing USB devices
+Summary:	Utilities library used for  Communications softwares
 Name:		bctoolbox
 Version:	5.4.50
 Release:	1
@@ -32,9 +32,19 @@ BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	libdecaf-devel
 
+BuildSystem:	cmake
+BuildOption:	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF}
+BuildOption:	-DENABLE_DECAF:BOOL=%{?with_defac:ON}%{?!with_decaf:OFF}
+BuildOption:	-DENABLE_UNIT_TESTS:BOOL=%{?with_unit_tests:ON}%{?!with_unit_tests:OFF}
+BuildOption:	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname}
+
 %patchlist
 bctoolbox-5.3.6-cmake-fix_cmake_path.patch
 bctoolbox-5.3.6-cmake-fix-version.patch
+# don't install unit tester
+%if %{with unit_tests} && ! %{with unit_tests_install}
+bctoolbox-5.4.50-dont-install-tester.patch
+%endif
 #bctoolbox-5.4.20-mbed.patch
 https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-mbedtls.patch
 https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-decaf-shared.patch
@@ -82,7 +92,6 @@ Requires:	%{tlibname} = %{version}-%{release}
 Requires:	%{devstat} = %{version}-%{release}
 %endif
 Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{name}-devel-doc < 1.0.15-2
 
 %description -n	%{devname}
 This package includes the development files for %{name}.
@@ -114,33 +123,4 @@ This package includes the static library files for %{name}.
 %endif
 
 #---------------------------------------------------------------------------
-
-%prep
-%autosetup -p1
-
-%build
-%cmake \
-	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF} \
-	-DENABLE_DECAF:BOOL=%{?with_defac:ON}%{?!with_decaf:OFF} \
-	-DENABLE_UNIT_TESTS:BOOL=%{?with_unit_tests:ON}%{?!with_unit_tests:OFF} \
-	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname} \
-	-G Ninja
-
-%ninja_build
-
-%install
-%ninja_install -C build
-
-# don't install unit tester
-%if %{with unit_tests} && ! %{with unit_tests_install}
-rm -f  %{buildroot}%{_bindir}/%{name}-tester
-rm -fr %{buildroot}%{_datadir}/%{name}-tester/
-%endif
-
-%check
-%if %{with unit_tests}
-pushd build
-ctest
-popd
-%endif
 
