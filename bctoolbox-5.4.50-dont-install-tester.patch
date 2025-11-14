@@ -5,7 +5,7 @@
  	set_target_properties(bctoolbox-tester-exe PROPERTIES XCODE_ATTRIBUTE_WARNING_CFLAGS "")
  	add_test(NAME bctoolbox_tester COMMAND bctoolbox_tester --verbose)
 -	if(NOT IOS)
-+	if(NOT UNIX)
++	if(NOT IOS AND NOT UNIX)
  		install(TARGETS bctoolbox-tester-exe
  			RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
  			LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
