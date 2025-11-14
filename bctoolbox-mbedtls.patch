@@ -1,0 +1,39 @@
+--- bctoolbox-5.4.17/src/crypto/mbedtls.cc.orig	2025-05-15 21:28:34.000000000 +0200
++++ bctoolbox-5.4.17/src/crypto/mbedtls.cc	2025-05-18 14:15:09.222213149 +0200
+@@ -38,6 +38,7 @@
+ namespace bctoolbox {
+ 
+ namespace {
++#ifdef MBEDTLS_THREADING_ALT
+ // This is also defined in mbedtls source code by a custom modification
+ using mbedtls_threading_mutex_t = void *;
+ 
+@@ -71,6 +72,7 @@ int threading_mutex_unlock_cpp(mbedtls_t
+ 	static_cast<std::mutex *>(*mutex)->unlock();
+ 	return 0;
+ }
++#endif
+ 
+ class mbedtlsStaticContexts {
+ public:
+@@ -80,8 +82,10 @@ public:
+ 
+ 	std::unique_ptr<RNG> sRNG;
+ 	mbedtlsStaticContexts() {
++#ifdef MBEDTLS_THREADING_ALT
+ 		mbedtls_threading_set_alt(threading_mutex_init_cpp, threading_mutex_free_cpp, threading_mutex_lock_cpp,
+ 		                          threading_mutex_unlock_cpp);
++#endif
+ 		if (psa_crypto_init() != PSA_SUCCESS) {
+ 			bctbx_error("MbedTLS PSA init fail");
+ 		}
+@@ -92,7 +96,9 @@ public:
+ 		// before destroying mbedtls internal context, destroy the static RNG
+ 		sRNG = nullptr;
+ 		mbedtls_psa_crypto_free();
++#ifdef MBEDTLS_THREADING_ALT
+ 		mbedtls_threading_free_alt();
++#endif
+ 	}
+ };
+ static const auto mbedtlsStaticContextsInstance = std::make_unique<mbedtlsStaticContexts>();

@@ -41,13 +41,12 @@ BuildOption:	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname}
 %patchlist
 bctoolbox-5.3.6-cmake-fix_cmake_path.patch
 bctoolbox-5.3.6-cmake-fix-version.patch
+https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-mbedtls.patch
+https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-decaf-shared.patch
 # don't install unit tester
 %if %{with unit_tests} && ! %{with unit_tests_install}
 bctoolbox-5.4.50-dont-install-tester.patch
 %endif
-#bctoolbox-5.4.20-mbed.patch
-https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-mbedtls.patch
-https://git.pld-linux.org/?p=packages/bctoolbox.git;a=blob_plain;f=bctoolbox-decaf-shared.patch
 
 %description
 Utilities library used by Belledonne Communications

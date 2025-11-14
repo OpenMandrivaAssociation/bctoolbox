@@ -1,0 +1,30 @@
+--- bctoolbox-5.3.26/cmake/FindDecaf.cmake.orig	2024-02-08 16:02:05.000000000 +0100
++++ bctoolbox-5.3.26/cmake/FindDecaf.cmake	2024-03-05 19:36:13.222752599 +0100
+@@ -41,10 +41,10 @@
+ 
+ if(TARGET decaf OR TARGET decaf-static)
+ 
+-	if(TARGET decaf-static)
+-		set(Decaf_TARGET decaf-static)
+-	elseif(TARGET decaf)
++	if(TARGET decaf)
+ 		set(Decaf_TARGET decaf)
++	elseif(TARGET decaf-static)
++		set(Decaf_TARGET decaf-static)
+ 	endif()
+ 
+ 	include(FindPackageHandleStandardArgs)
+@@ -72,10 +72,10 @@ else()
+ 
+ 	find_package(Decaf ${_OPTIONS})
+ 
+-	if(TARGET decaf-static)
+-		set(Decaf_TARGET decaf-static)
+-	elseif(TARGET decaf)
++	if(TARGET decaf)
+ 		set(Decaf_TARGET decaf)
++	elseif(TARGET decaf-static)
++		set(Decaf_TARGET decaf-static)
+ 	endif()
+ 
+ endif()
