@@ -17,7 +17,7 @@
 
 Summary:	Utilities library used for  Communications softwares
 Name:		bctoolbox
-Version:	5.4.50
+Version:	5.4.106
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -36,7 +36,7 @@ BuildSystem:	cmake
 BuildOption:	-DENABLE_STRICT:BOOL=%{?with_strict:ON}%{?!with_strict:OFF}
 BuildOption:	-DENABLE_DECAF:BOOL=%{?with_defac:ON}%{?!with_decaf:OFF}
 BuildOption:	-DENABLE_UNIT_TESTS:BOOL=%{?with_unit_tests:ON}%{?!with_unit_tests:OFF}
-BuildOption:	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{oname}
+BuildOption:	-DCONFIG_PACKAGE_LOCATION:PATH=%{_datadir}/cmake/%{name}
 
 %patchlist
 bctoolbox-5.3.6-cmake-fix_cmake_path.patch
